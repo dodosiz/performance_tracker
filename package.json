@@ -1,0 +1,18 @@
+{
+  "name": "performance",
+  "version": "1.0.0",
+  "description": "Performance tracker from exported Jira CSV files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Jira",
+    "Performance",
+    "tracker",
+    "Nodejs",
+    "CSV"
+  ],
+  "author": "Theo Aswestopoulos",
+  "license": "ISC"
+}
