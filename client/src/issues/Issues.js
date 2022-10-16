@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { IssueTable } from "./IssueTable";
-import Container from "react-bootstrap/Container";
 import { AssigneeFilter } from "./AssigneeFilter";
+import Container from "react-bootstrap/esm/Container";
 
 const baseURL = "http://localhost:8080/";
 
@@ -22,10 +22,9 @@ function Issues() {
 
     if (!issues) return null;
 
-    const filteredIssues =
-        !developer || developer === ""
-            ? issues
-            : issues.filter((i) => i.assignee === developer);
+    const filteredIssues = !developer
+        ? issues
+        : issues.filter((i) => i.assignee === developer);
 
     return (
         <Container className="mt-3">

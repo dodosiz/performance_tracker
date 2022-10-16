@@ -6,28 +6,28 @@ export function AssigneeFilter({ developers, developer, setDeveloper }) {
         <Form>
             <Form.Group className="mb-3">
                 <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                        {!developer || developer === ""
-                            ? "All Developers"
-                            : developer}
+                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                        {!developer ? "All Developers" : developer}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item onClick={() => setDeveloper("")}>
+                        <Dropdown.Item onClick={() => setDeveloper(null)}>
                             All Developers
                         </Dropdown.Item>
-                        {developers.map((d) => {
-                            return (
-                                <Dropdown.Item
-                                    onClick={(e) =>
-                                        setDeveloper(e.target.innerText)
-                                    }
-                                    key={d}
-                                >
-                                    {d}
-                                </Dropdown.Item>
-                            );
-                        })}
+                        {developers !== null
+                            ? developers.map((d) => {
+                                  return (
+                                      <Dropdown.Item
+                                          onClick={(e) =>
+                                              setDeveloper(e.target.innerText)
+                                          }
+                                          key={d}
+                                      >
+                                          {d}
+                                      </Dropdown.Item>
+                                  );
+                              })
+                            : null}
                     </Dropdown.Menu>
                 </Dropdown>
             </Form.Group>
