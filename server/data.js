@@ -14,24 +14,27 @@ function createEntityFromRow(row = []) {
     };
 }
 
-async function readFromFile(fileName = "") {
-    const result = [];
+async function readFromFile(fileName = "", entities = [], ids = []) {
     const parser = fs
         .createReadStream(fileName)
         .pipe(parse({ delimiter: ",", from_line: 2 }))
         .on("data", function (row) {
-            result.push(createEntityFromRow(row));
+            const issue = createEntityFromRow(row);
+            if (ids.indexOf(issue.ticket) === -1) {
+                ids.push(issue.ticket);
+                entities.push(issue);
+            }
         });
     await finished(parser);
-    return result;
 }
 
 async function getData() {
-    const entities8 = await readFromFile("./resources/version8.csv");
-    const entities9 = await readFromFile("./resources/version9.csv");
-    const entities10 = await readFromFile("./resources/version10.csv");
-    const allEntities = [...entities8, ...entities9, ...entities10];
-    return allEntities;
+    const entities = [];
+    const ids = [];
+    await readFromFile("./resources/version8.csv", entities, ids);
+    await readFromFile("./resources/version9.csv", entities, ids);
+    await readFromFile("./resources/version10.csv", entities, ids);
+    return entities;
 }
 
 module.exports = getData;
