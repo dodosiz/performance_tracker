@@ -26,13 +26,12 @@ async function readFromFile(fileName = "") {
     return result;
 }
 
-async function readAllData() {
+async function getData() {
     const entities8 = await readFromFile("./resources/version8.csv");
     const entities9 = await readFromFile("./resources/version9.csv");
     const entities10 = await readFromFile("./resources/version10.csv");
     const allEntities = [...entities8, ...entities9, ...entities10];
-    console.log(allEntities);
     return allEntities;
 }
 
-readAllData();
+module.exports = getData;
