@@ -2,7 +2,7 @@ import React from "react";
 import * as d3 from "d3";
 import { useD3 } from "./useD3";
 
-export function BarChart({ issuesByDeveloper }) {
+export function BarChart({ issuesByDeveloper, developer }) {
     const data = Object.keys(issuesByDeveloper).map((k) => ({
         developer: k,
         issues: issuesByDeveloper[k],
@@ -66,12 +66,12 @@ export function BarChart({ issuesByDeveloper }) {
                 .attr("x", (d) => x(d.developer))
                 .attr("width", x.bandwidth())
                 .attr("fill", (d) =>
-                    d.developer === "taswestopoulos" ? "red" : "steelblue"
+                    d.developer === developer ? "red" : "steelblue"
                 )
                 .attr("y", (d) => y1(d.issues))
                 .attr("height", (d) => y1(0) - y1(d.issues));
         },
-        [data.length]
+        [data.length, developer]
     );
 
     return (

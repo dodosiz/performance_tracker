@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { IssueTable } from "./IssueTable";
-import { AssigneeFilter } from "./AssigneeFilter";
+import { AssigneeFilter } from "../AssigneeFilter";
 import Container from "react-bootstrap/esm/Container";
 
 const baseURL = "http://localhost:8080/";
