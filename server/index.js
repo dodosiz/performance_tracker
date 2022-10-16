@@ -34,7 +34,7 @@ app.get("/features-by-developer", async (req, res) => {
             (issue.type === "Requirement" || issue.type === "DevRequirement")
     );
     console.log(
-        "GET issues-by-developer: total issues found: " + issues.length
+        "GET features-by-developer: total issues found: " + issues.length
     );
     const developers = getDevelopers(issues);
     const result = issuesCountByDeveloper(developers, issues);
@@ -45,9 +45,7 @@ app.get("/bugs-by-developer", async (req, res) => {
     const issues = (await getData()).filter(
         (issue) => issue.resolution === "DONE" && issue.type === "Bug"
     );
-    console.log(
-        "GET issues-by-developer: total issues found: " + issues.length
-    );
+    console.log("GET bugs-by-developer: total issues found: " + issues.length);
     const developers = getDevelopers(issues);
     const result = issuesCountByDeveloper(developers, issues);
     res.send(result);
@@ -60,7 +58,7 @@ app.get("/effort-by-developer", async (req, res) => {
             (issue.type === "Requirement" || issue.type === "DevRequirement")
     );
     console.log(
-        "GET issues-by-developer: total issues found: " + issues.length
+        "GET effort-by-developer: total issues found: " + issues.length
     );
     const developers = getDevelopers(issues);
     const result = {};
@@ -71,6 +69,15 @@ app.get("/effort-by-developer", async (req, res) => {
             .reduce((p, c) => p + c, 0);
     }
     res.send(result);
+});
+
+app.get("/developers", async (req, res) => {
+    const issues = (await getData()).filter(
+        (issue) => issue.resolution === "DONE"
+    );
+    const developers = getDevelopers(issues);
+    console.log("GET developers: total developers found: " + developers.length);
+    res.send(developers);
 });
 
 function getDevelopers(issues = []) {
