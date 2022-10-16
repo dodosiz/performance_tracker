@@ -2,7 +2,7 @@ import React from "react";
 import * as d3 from "d3";
 import { useD3 } from "./useD3";
 
-export function BarChart({ issuesByDeveloper, developer }) {
+export function BarChart({ issuesByDeveloper, developer, graph }) {
     const data = Object.keys(issuesByDeveloper).map((k) => ({
         developer: k,
         issues: issuesByDeveloper[k],
@@ -71,22 +71,25 @@ export function BarChart({ issuesByDeveloper, developer }) {
                 .attr("y", (d) => y1(d.issues))
                 .attr("height", (d) => y1(0) - y1(d.issues));
         },
-        [data.length, developer]
+        [developer, graph]
     );
 
     return (
-        <svg
-            ref={ref}
-            style={{
-                height: 500,
-                width: "100%",
-                marginRight: "0px",
-                marginLeft: "0px",
-            }}
-        >
-            <g className="plot-area" />
-            <g className="x-axis" />
-            <g className="y-axis" />
-        </svg>
+        <>
+            <svg
+                ref={ref}
+                style={{
+                    height: 500,
+                    width: "100%",
+                    marginRight: "0px",
+                    marginLeft: "0px",
+                }}
+            >
+                <g className="plot-area" />
+                <g className="x-axis" />
+                <g className="y-axis" />
+            </svg>
+            <p>The graph shows {graph}</p>
+        </>
     );
 }
