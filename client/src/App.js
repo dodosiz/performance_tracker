@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import Nav from "react-bootstrap/esm/Nav";
+import { Graphs } from "./graphs/Graphs";
 import Issues from "./issues/Issues";
 
 function App() {
@@ -25,7 +26,7 @@ function App() {
                     </Nav.Link>
                 </Nav.Item>
             </Nav>
-            {tab === "issues" ? <Issues /> : null}
+            {tab === "issues" ? <Issues /> : <Graphs />}
         </Container>
     );
 }
