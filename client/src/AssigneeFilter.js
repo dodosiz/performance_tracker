@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 
 export function AssigneeFilter({ developers, developer, setDeveloper }) {
     return (
-        <Form>
+        <Form style={{ display: "inline-block" }}>
             <Form.Group className="mb-3">
                 <Dropdown>
                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">

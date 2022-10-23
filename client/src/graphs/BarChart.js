@@ -41,7 +41,7 @@ export function BarChart({ issuesByDeveloper, developer, graph }) {
             const y1Axis = (g) =>
                 g
                     .attr("transform", `translate(${margin.left},0)`)
-                    .style("color", "steelblue")
+                    .style("color", "black")
                     .call(d3.axisLeft(y1).ticks(null, "s"))
                     .call((g) => g.select(".domain").remove())
                     .call((g) =>
@@ -58,7 +58,7 @@ export function BarChart({ issuesByDeveloper, developer, graph }) {
             svg.select(".y-axis").call(y1Axis);
 
             svg.select(".plot-area")
-                .attr("fill", "steelblue")
+                .attr("fill", "#ad9c94")
                 .selectAll(".bar")
                 .data(data)
                 .join("rect")
@@ -66,7 +66,7 @@ export function BarChart({ issuesByDeveloper, developer, graph }) {
                 .attr("x", (d) => x(d.developer))
                 .attr("width", x.bandwidth())
                 .attr("fill", (d) =>
-                    d.developer === developer ? "red" : "steelblue"
+                    d.developer === developer ? "#5f1f3e" : "#ad9c94"
                 )
                 .attr("y", (d) => y1(d.issues))
                 .attr("height", (d) => y1(0) - y1(d.issues));

@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 
 export function GraphFilter({ graphs, graph, setGraph }) {
     return (
-        <Form>
+        <Form style={{ display: "inline-block", marginLeft: 5 }}>
             <Form.Group className="mb-3">
                 <Dropdown>
                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">

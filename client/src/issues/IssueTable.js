@@ -3,7 +3,7 @@ import { IssueRow } from "./IssueRow";
 
 export function IssueTable({ issues }) {
     return (
-        <Table striped bordered hover size="sm">
+        <Table striped borderless hover size="sm">
             <thead>
                 <tr className="sticky-header">
                     <th>Ticket</th>
