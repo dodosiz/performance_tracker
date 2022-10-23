@@ -32,6 +32,12 @@ export function IssueTypeFilter({ issueType, setIssueType }) {
                         >
                             {"Requirement"}
                         </Dropdown.Item>
+                        <Dropdown.Item
+                            onClick={() => setIssueType("Task")}
+                            key="Task"
+                        >
+                            {"Task"}
+                        </Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </Form.Group>

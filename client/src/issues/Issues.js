@@ -28,9 +28,16 @@ function Issues() {
         ? issues
         : issues.filter((i) => i.assignee === developer);
 
-    const filteredIssues = !issueType
+    const filteredByType = !issueType
         ? filteredByDeveloper
         : filteredByDeveloper.filter((i) => i.type === issueType);
+
+    const sortedIssues =
+        (issueType === "Requirement") | (issueType === "DevRequirement")
+            ? filteredByType.sort(
+                  (a, b) => b.estimatedEffort - a.estimatedEffort
+              )
+            : filteredByType;
 
     return (
         <Container className="mt-3">
@@ -43,8 +50,8 @@ function Issues() {
                 issueType={issueType}
                 setIssueType={setIssueType}
             />
-            <p>Total issues: {filteredIssues.length}</p>
-            <IssueTable issues={filteredIssues} />
+            <p>Total issues: {sortedIssues.length}</p>
+            <IssueTable issues={sortedIssues} />
         </Container>
     );
 }
